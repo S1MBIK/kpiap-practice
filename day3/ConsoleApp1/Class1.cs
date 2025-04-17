@@ -22,7 +22,7 @@ namespace day3
             return (1.0 / (a * a)) - (1.0 / (b * b * b));
         }
 
-        // Метод возведения в куб суммы a и b
+        
         public int CubeOfSum()
         {
             return (a + b) * (a + b) * (a + b);
