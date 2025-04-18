@@ -16,7 +16,7 @@ class Program
 
     static void ShiftRight3(ref double A, ref double B, ref double C)
     {
-        (A, B, C) = (C, B, A);
+        (A, B, C) = (C, A, B);
 
     }
 }
