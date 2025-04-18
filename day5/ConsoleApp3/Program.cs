@@ -55,7 +55,6 @@ namespace ConsoleApp3
                 Console.WriteLine(x);
             }
 
-
         }
 
     }

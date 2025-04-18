@@ -2,12 +2,6 @@
 
 class Program
 {
-    // Определяем пользовательское исключение
-    public class OutOfRangeException : Exception
-    {
-        public OutOfRangeException(string message) : base(message) { }
-    }
-
     static void Main()
     {
         try
