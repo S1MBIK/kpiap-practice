@@ -12,7 +12,7 @@ class Program
 
             if (x <= 0 || x >= 1 && x < 1)
             {
-                throw new OutOfRangeException("x должен быть в диапазоне (0, 1) или x >= 1.");
+                throw new ArgumentOutOfRangeException("x должен быть в диапазоне (0, 1) или x >= 1.");
             }
 
             double f;
@@ -27,7 +27,7 @@ class Program
             }
             else
             {
-                throw new OutOfRangeException("x должен быть в диапазоне (0, 1) или x >= 1.");
+                throw new ArgumentOutOfRangeException("x должен быть в диапазоне (0, 1) или x >= 1.");
             }
 
             Console.WriteLine($"Результат функции f: f = {f}");
@@ -40,7 +40,7 @@ class Program
         {
             Console.WriteLine($"Ошибка: неверный формат ввода. {ex.Message}");
         }
-        catch (OutOfRangeException ex)
+        catch (ArgumentOutOfRangeException ex)
         {
             Console.WriteLine($"Ошибка: {ex.Message}");
         }
