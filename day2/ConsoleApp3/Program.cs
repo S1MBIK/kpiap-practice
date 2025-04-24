@@ -1,31 +1,18 @@
-﻿namespace ConsoleApp3
+﻿using static ConsoleApp1.Class1;
+
+class Program
 {
-    internal class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
+        Fraction fraction1 = new Fraction(1, 2);
+        Fraction fraction2 = new Fraction(3, 4);
 
-            double sum = 0;
-            Console.WriteLine("введите N от 1 до 10");
-            double n = Convert.ToInt32(Console.ReadLine());
-            if (n >= 1 && n <= 10)
-            {
-                for (double i = 1; i < n; i++)
-                {
+        Console.WriteLine($"Дробь 1: {fraction1}");
+        Console.WriteLine($"Дробь 2: {fraction2}");
 
-                    double kvadrat = Math.Pow(i, 2);
-                    sum += kvadrat;
-
-                    Console.WriteLine($"это квадрат {kvadrat} цифры {i}");
-                }
-                Console.WriteLine(sum);
-            }
-            else
-            {
-                Console.WriteLine("введите число от 1 до 10");
-                return;
-            }
-
-        }
+        Console.WriteLine($"Сложение: {fraction1} + {fraction2} = {fraction1 + fraction2}");
+        Console.WriteLine($"Вычитание: {fraction1} - {fraction2} = {fraction1 - fraction2}");
+        Console.WriteLine($"Умножение: {fraction1} * {fraction2} = {fraction1 * fraction2}");
+        Console.WriteLine($"Деление: {fraction1} / {fraction2} = {fraction1 / fraction2}");
     }
 }

@@ -1,41 +1,42 @@
 ﻿using System;
 
-class Program
+namespace ConsoleApp1
 {
-    static void Main()
+    internal class Program
     {
-        try
+        static void Main(string[] args)
         {
-            // a: y = arctg(x) / (x - 3)
-            Console.Write("Введите значение x для выражения a: ");
-            string inputA = Console.ReadLine();
-            double xA = Convert.ToDouble(inputA);
-            if (xA == 3) throw new DivideByZeroException("Деление на ноль в выражении a.");
+            int[] nums = new int[10];
 
-            double yA = Math.Atan(xA) / (xA - 3);
-            Console.WriteLine($"Результат выражения a: y = {yA}");
+            FildMassiv(nums);
+            PrintArray(nums);
+            ProvekaO(nums);
+            PrintArray(nums);
+        }
 
-            // Пример b: y = ln(x) + (5x - 3) / (x - 1)
-            Console.Write("Введите значение x для выражения b: ");
-            string inputB = Console.ReadLine();
-            double xB = Convert.ToDouble(inputB);
-            if (xB <= 0) throw new FormatException("Нельзя взять логарифм от отрицательного числа или нуля в выражении b.");
-            if (xB == 1) throw new DivideByZeroException("Деление на ноль в выражении b.");
+        static void ProvekaO(int[] nums)
+        {
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (nums[i] % 2 == 0)
+                {
+                    nums[i] = 0;
+                }
+            }
+        }
 
-            double yB = Math.Log(xB) + (5 * xB - 3) / (xB - 1);
-            Console.WriteLine($"Результат выражения b: y = {yB}");
-        }
-        catch (DivideByZeroException ex)
+        static void FildMassiv(int[] nums)
         {
-            Console.WriteLine($"Ошибка: {ex.Message}");
+            Random random = new Random();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                nums[i] = random.Next(1, 101);
+            }
         }
-        catch (FormatException ex)
+
+        static void PrintArray(int[] nums)
         {
-            Console.WriteLine($"Ошибка: {ex.Message}");
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Неизвестная ошибка: {ex.Message}");
+            Console.WriteLine(string.Join(", ", nums));
         }
     }
 }

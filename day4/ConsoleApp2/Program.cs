@@ -1,76 +1,52 @@
 ﻿using System;
 
-namespace MatrixApp 
+class Program
 {
-    public class Matrix
+    static void Main()
     {
-        private double[,] elements; 
-        public int Rows { get; private set; } 
-        public int Columns { get; private set; }
-
-        public Matrix(int rows, int columns)
+        try
         {
-            Rows = rows;
-            Columns = columns;
-            elements = new double[rows, columns];
-        }
+            Console.Write("Введите значение x: ");
+            string input = Console.ReadLine();
+            double x = Convert.ToDouble(input);
 
-        public double this[int row, int column]
-        {
-            get => elements[row, column];
-            set => elements[row, column] = value;
-        }
-
-        public double SumMainDiagonal()
-        {
-            double sum = 0;
-            for (int i = 0; i < Math.Min(Rows, Columns); i++)
+            if (x <= 0 || x >= 1 && x < 1)
             {
-                sum += elements[i, i];
+                throw new ArgumentOutOfRangeException("x должен быть в диапазоне (0, 1) или x >= 1.");
             }
-            return sum;
-        }
 
-        public static bool operator >(Matrix a, Matrix b)
-        {
-            return a.SumMainDiagonal() > b.SumMainDiagonal();
-        }
-
-        public static bool operator <(Matrix a, Matrix b)
-        {
-            return a.SumMainDiagonal() < b.SumMainDiagonal();
-        }
-    }
-
-    class Program
-    {
-        static void Main()
-        {
-            Matrix matrix1 = new Matrix(3, 3);
-            matrix1[0, 0] = 1;
-            matrix1[1, 1] = 2;
-            matrix1[2, 2] = 3;
-
-            Matrix matrix2 = new Matrix(3, 3);
-            matrix2[0, 0] = 4;
-            matrix2[1, 1] = 5;
-            matrix2[2, 2] = 6;
-
-            Console.WriteLine($"Сумма главной диагонали Matrix1: {matrix1.SumMainDiagonal()}");
-            Console.WriteLine($"Сумма главной диагонали Matrix2: {matrix2.SumMainDiagonal()}");
-
-            if (matrix1 > matrix2)
+            double f;
+            if (x > 0 && x < 1)
             {
-                Console.WriteLine("Matrix1 имеет большую сумму главной диагонали, чем Matrix2.");
+                f = x * Math.Cos(x);
             }
-            else if (matrix1 < matrix2)
+            else if (x >= 1)
             {
-                Console.WriteLine("Matrix1 имеет меньшую сумму главной диагонали, чем Matrix2.");
+                if (x == 1) throw new DivideByZeroException("Деление на ноль в выражении f.");
+                f = 12.0 / (3 * x - 3);
             }
             else
             {
-                Console.WriteLine("Суммы главной диагонали Matrix1 и Matrix2 равны.");
+                throw new ArgumentOutOfRangeException("x должен быть в диапазоне (0, 1) или x >= 1.");
             }
+
+            Console.WriteLine($"Результат функции f: f = {f}");
+        }
+        catch (DivideByZeroException ex)
+        {
+            Console.WriteLine($"Ошибка: {ex.Message}");
+        }
+        catch (FormatException ex)
+        {
+            Console.WriteLine($"Ошибка: неверный формат ввода. {ex.Message}");
+        }
+        catch (ArgumentOutOfRangeException ex)
+        {
+            Console.WriteLine($"Ошибка: {ex.Message}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Неизвестная ошибка: {ex.Message}");
         }
     }
 }

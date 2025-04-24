@@ -1,18 +1,35 @@
 ﻿using System;
 
-namespace ConsoleApp4
+class Program
 {
-    internal class Program
+    static void Main()
     {
-        static void Main(string[] args)
+        Console.Write("Введите номер пассажира (от 1 до 12): ");
+        int passengerNumber = Convert.ToInt32(Console.ReadLine());
+
+        if (passengerNumber < 1 || passengerNumber > 12)
         {
-           
-            double x = -1;
+            Console.WriteLine("Некорректный номер. Введите номер от 1 до 12.");
+            return;
+        }
 
-            
-            double y = 7 * Math.Pow(Math.Atan(Math.Sqrt(Math.Exp(x) + 1 + Math.Abs(x))), 2);
-
-            Console.WriteLine($"Значение y при x = {x} равно: {y}");
+        switch (passengerNumber)
+        {
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+                Console.WriteLine($"Пассажир {passengerNumber} грязный.");
+                break;
+            case 3:
+            case 9:
+            case 12:
+                Console.WriteLine($"Пассажир {passengerNumber} исцарапанный.");
+                break;
+            default:
+                Console.WriteLine($"Пассажир {passengerNumber} в порядке.");
+                break;
         }
     }
 }

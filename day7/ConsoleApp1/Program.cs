@@ -1,19 +1,20 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 class Program
 {
     static void Main()
     {
-        string input = "Пример сообщения ";
-        char endChar = 'я'; 
+        string input = "Привет! Это тест. #@&*() Вопрос: что?";
 
-        string result = RemoveWordsEndingWith(input, endChar);
-        Console.WriteLine(result);
-    }
+        string pattern = @"\b[\p{P}]+\b";
 
-    static string RemoveWordsEndingWith(string input, char endChar)
-    {
-        return string.Join(" ", input.Split(' ')
-                                      .Where(word => !word.EndsWith(endChar)));
+        MatchCollection matches = Regex.Matches(input, pattern);
+
+        Console.WriteLine("Слова, состоящие только из символов пунктуации:");
+        foreach (Match match in matches)
+        {
+            Console.WriteLine(match.Value);
+        }
     }
 }

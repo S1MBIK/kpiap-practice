@@ -1,31 +1,22 @@
-﻿namespace ConsoleApp2
+﻿using System;
+using System.Text.RegularExpressions;
+
+class Program
 {
-    internal class Program
+    static void Main()
     {
-        static void Main(string[] args)
+        string text = "Аист и астра - красивые слова, которые начинаются на A или а.";
+
+        string pattern = @"\b[AaАа]\w*";
+
+        Regex regex = new Regex(pattern, RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
+
+        MatchCollection matches = regex.Matches(text);
+
+        Console.WriteLine("Найденные слова, начинающиеся с 'A' или 'а':");
+        foreach (Match match in matches)
         {
-            Console.WriteLine("введите текст");
-            string text = Console.ReadLine();
-
-            Console.WriteLine("введите длинну n слов");
-            int n = int.Parse(Console.ReadLine());
-            
-            PrintWord(text, n);
-        }
-
-        static void PrintWord(string text, int n)
-        {
-            string[] words = text.Split(' ');
-            Array.Sort(words);
-
-            Console.WriteLine($"слова длинной {n} в алфавитном порядке");
-            foreach( string word in words )
-            {
-                if (word.Length == n)
-                {
-                    Console.WriteLine(word);
-                }
-            }
+            Console.WriteLine(match.Value);
         }
     }
 }

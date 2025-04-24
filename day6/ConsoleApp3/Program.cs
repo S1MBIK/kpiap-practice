@@ -4,74 +4,61 @@ class Program
 {
     static void Main()
     {
-        // Ввод размера матрицы
-        Console.WriteLine("Введите размер матрицы N (N < 10):");
-        int N = Convert.ToInt32(Console.ReadLine());
-        while (N >= 10)
+        Console.WriteLine("Введите предложение:");
+        string input = Console.ReadLine();
+        string[] words = input.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+        if (words.Length < 3)
         {
-            Console.WriteLine("Пожалуйста, введите N меньше 10:");
-            N = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Недостаточно слов в предложении.");
+            return;
         }
 
-        Console.WriteLine("Введите диапазон случайных чисел (a и b):");
-        Console.Write("a: ");
-        int a = int.Parse(Console.ReadLine());
-        Console.Write("b: ");
-        int b = int.Parse(Console.ReadLine());
+        SwapFirstAndLast(words);
+        Console.WriteLine("После замены первого и последнего слов: " + string.Join(" ", words));
 
-        Console.WriteLine("Введите значение M:");
-        int M = int.Parse(Console.ReadLine());
+        words = ConcatenateSecondAndThird(words);
+        Console.WriteLine("После склеивания второго и третьего слов: " + string.Join(" ", words));
 
-        int[,] matrix = new int[N, N];
-        Random random = new Random();
-
-        Console.WriteLine("Сгенерированная матрица:");
-        for (int i = 0; i < N; i++)
+        if (words.Length > 2)
         {
-            for (int j = 0; j < N; j++)
-            {
-                matrix[i, j] = random.Next(a, b + 1);
-                Console.Write(matrix[i, j] + "\t");
-            }
-            Console.WriteLine();
+            Console.WriteLine("Третье слово в обратном порядке: " + ReverseWord(words[2]));
         }
 
-        double sumLessThanM = 0;
-        int countLessThanM = 0;
-        int[] columnSums = new int[N];
-
-        for (int i = 0; i < N; i++)
+        if (words.Length > 0)
         {
-            for (int j = 0; j < N; j++)
-            {
-                if (matrix[i, j] < M)
-                {
-                    sumLessThanM += matrix[i, j];
-                    countLessThanM++;
-                }
-                if (matrix[i, j] > 0)
-                {
-                    columnSums[j] += matrix[i, j];
-                }
-            }
+            Console.WriteLine("Первое слово после удаления первых двух букв: " + RemoveFirstTwoLetters(words[0]));
         }
+    }
 
-        double averageLessThanM;
-        if (countLessThanM > 0)
-        {
-            averageLessThanM = sumLessThanM / countLessThanM;
-        }
-        else
-        {
-            averageLessThanM = 0;
-        }
+    static void SwapFirstAndLast(string[] words)
+    {
+        string temp = words[0];
+        words[0] = words[words.Length - 1];
+        words[words.Length - 1] = temp;
+    }
 
-        Console.WriteLine($"Среднее арифметическое чисел, меньших {M}: {averageLessThanM}");
+    static string[] ConcatenateSecondAndThird(string[] words)
+    {
+        words[1] += words[2];
+        Array.Copy(words, 3, words, 2, words.Length - 3);
+        Array.Resize(ref words, words.Length - 1);
+        return words;
+    }
 
-        Console.WriteLine("Суммы положительных элементов каждого столбца:");
-        for (int j = 0; j < N; j++)
+    static string ReverseWord(string word)
+    {
+        char[] chars = word.ToCharArray();
+        Array.Reverse(chars);
+        return new string(chars);
+    }
+
+    static string RemoveFirstTwoLetters(string word)
+    {
+        if (word.Length > 2)
         {
-            Console.WriteLine($"Столбец {j + 1}: {columnSums[j]}");
+            return word.Substring(2);
         }
+        return word;
     }
 }

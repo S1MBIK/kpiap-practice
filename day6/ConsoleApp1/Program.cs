@@ -1,42 +1,19 @@
 ﻿using System;
 
-namespace ConsoleApp1
+class Program
 {
-    internal class Program
+    static void Main()
     {
-        static void Main(string[] args)
-        {
-            int[] nums = new int[10];
+        string input = "Пример сообщения ";
+        char endChar = 'я'; 
 
-            FildMassiv(nums);
-            PrintArray(nums);
-            ProvekaO(nums);
-            PrintArray(nums);
-        }
+        string result = RemoveWordsEndingWith(input, endChar);
+        Console.WriteLine(result);
+    }
 
-        static void ProvekaO(int[] nums)
-        {
-            for (int i = 0; i < nums.Length; i++)
-            {
-                if (nums[i] % 2 == 0)
-                {
-                    nums[i] = 0;
-                }
-            }
-        }
-
-        static void FildMassiv(int[] nums)
-        {
-            Random random = new Random();
-            for (int i = 0; i < nums.Length; i++)
-            {
-                nums[i] = random.Next(1, 101);
-            }
-        }
-
-        static void PrintArray(int[] nums)
-        {
-            Console.WriteLine(string.Join(", ", nums));
-        }
+    static string RemoveWordsEndingWith(string input, char endChar)
+    {
+        return string.Join(" ", input.Split(' ')
+                                      .Where(word => !word.EndsWith(endChar)));
     }
 }

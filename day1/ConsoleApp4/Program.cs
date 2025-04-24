@@ -1,18 +1,27 @@
-﻿namespace ConsoleApp4
+﻿using System;
+
+class Program
 {
-    internal class Program
+    static void Main()
     {
-        static void Main(string[] args)
+        Console.Write("Введите значение x: ");
+        double x = Convert.ToDouble(Console.ReadLine());
+        double y;
+
+        if (x >= 1 && x <= 5)
         {
-            const double funt = 409.5;
-            const double gramToKilog = 1000.0;
-
-            Console.WriteLine("Введите вес в фунтах");
-            double weightToFunt = Convert.ToDouble(Console.ReadLine());
-
-            double weightToKilo = (funt * weightToFunt) / gramToKilog;
-            Console.WriteLine($"Килограммы { weightToKilo:F2}");
-
+            y = Math.Log(x) + Math.Pow(Math.Cos(x), 2) * Math.Pow(x, 2);
         }
+        else if (x == Math.PI)
+        {
+            y = Math.Pow(Math.Sin(x), 2);
+        }
+        else
+        {
+            Console.WriteLine("Значение x вне допустимого диапазона.");
+            return;
+        }
+
+        Console.WriteLine($"Значение y для x = {x} равно: {y}");
     }
 }

@@ -4,12 +4,21 @@
     {
         static void Main(string[] args)
         {
-            int number = 123;
-            int secondDigit = number % 100 / 10;
-            int thereDigit = number % 10;
-            int product = secondDigit * thereDigit;
+            int numbers = 246;
+            int firstDigit = numbers / 100;
+            int secondDigit = numbers % 100 / 10;
+            int threeDigit = numbers % 10;
 
-            Console.WriteLine(product);
+            int difference1 = threeDigit - secondDigit;
+            int difference2 = secondDigit - firstDigit;
+
+            if (difference1 == difference2)
+                Console.WriteLine($"Цифры данного трехзначного числа образуют арифметическую прогрессию");
+           
+            else
+                Console.WriteLine("ложь");
         }
     }
 }
+
+

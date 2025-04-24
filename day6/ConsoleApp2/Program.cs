@@ -1,52 +1,29 @@
-﻿using System;
-
-class Program
+﻿namespace ConsoleApp2
 {
-    static void Main()
+    internal class Program
     {
-    
-        int n = 10; 
-        int[] numbers = new int[n];
-
-        Random random = new Random();
-
-        for (int i = 0; i < n; i++)
+        static void Main(string[] args)
         {
-            numbers[i] = random.Next(-50, 51);
+            Console.WriteLine("введите текст");
+            string text = Console.ReadLine();
+
+            Console.WriteLine("введите длинну n слов");
+            int n = int.Parse(Console.ReadLine());
+            
+            PrintWord(text, n);
         }
 
-        Console.WriteLine("Сгенерированный массив: " + string.Join(", ", numbers));
-
-        bool isEvenAfterOdd = false;
-
-        for (int i = 0; i < n - 1; i++)
+        static void PrintWord(string text, int n)
         {
-            if (numbers[i] % 2 != 0 && numbers[i + 1] % 2 == 0)
-            {
-                isEvenAfterOdd = true;
-                break;
-            }
-        }
+            string[] words = text.Split(' ');
+            Array.Sort(words);
 
-        if (isEvenAfterOdd)
-        {
-            Console.WriteLine("Положительные числа в обратном порядке:");
-            for (int i = n - 1; i >= 0; i--)
+            Console.WriteLine($"слова длинной {n} в алфавитном порядке");
+            foreach( string word in words )
             {
-                if (numbers[i] > 0)
+                if (word.Length == n)
                 {
-                    Console.Write(numbers[i] + " ");
-                }
-            }
-        }
-        else
-        {
-            Console.WriteLine("Отрицательные числа в обратном порядке:");
-            for (int i = n - 1; i >= 0; i--)
-            {
-                if (numbers[i] < 0)
-                {
-                    Console.Write(numbers[i] + " ");
+                    Console.WriteLine(word);
                 }
             }
         }

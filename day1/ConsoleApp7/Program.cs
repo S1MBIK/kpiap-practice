@@ -1,23 +1,47 @@
 ﻿using System;
 
-namespace TrapezoidArea
+class Program
 {
-    internal class Program
+    static void Main()
     {
-        static void Main(string[] args)
+        Console.Write("Введите A: ");
+        int A = Convert.ToInt32(Console.ReadLine());
+
+        Console.Write("Введите B: ");
+        int B = Convert.ToInt32(Console.ReadLine());
+
+        // Используя оператор while
+        Console.WriteLine("Числа от A до B, кратные 3 (while):");
+        int i = A;
+        while (i <= B)
         {
-            Console.Write("Введите длину первого основания a: ");
-            double a = Convert.ToDouble(Console.ReadLine());
+            if (i % 3 == 0)
+            {
+                Console.WriteLine(i);
+            }
+            i++;
+        }
 
-            Console.Write("Введите длину второго основания b: ");
-            double b = Convert.ToDouble(Console.ReadLine());
+        // Используя оператор do while
+        Console.WriteLine("\nЧисла от A до B, кратные 3 (do while):");
+        i = A;
+        do
+        {
+            if (i % 3 == 0)
+            {
+                Console.WriteLine(i);
+            }
+            i++;
+        } while (i <= B);
 
-            Console.Write("Введите высоту h: ");
-            double h = Convert.ToDouble(Console.ReadLine());
-
-            double area = (a + b) * h / 2;
-
-            Console.WriteLine($"Площадь равна: {area}");
+        // Используя оператор for
+        Console.WriteLine("\nЧисла от A до B, кратные 3 (for):");
+        for (int j = A; j <= B; j++)
+        {
+            if (j % 3 == 0)
+            {
+                Console.WriteLine(j);
+            }
         }
     }
 }

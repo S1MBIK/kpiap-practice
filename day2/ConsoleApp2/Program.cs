@@ -1,24 +1,22 @@
-﻿namespace ConsoleApp2
+﻿using System;
+
+namespace ConsoleApp2
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            int numbers = 246;
-            int firstDigit = numbers / 100;
-            int secondDigit = numbers % 100 / 10;
-            int threeDigit = numbers % 10;
+            Republic republic = new Republic("Франция");
+            republic.Describe();
 
-            int difference1 = threeDigit - secondDigit;
-            int difference2 = secondDigit - firstDigit;
+            Monarchy monarchy = new Monarchy("Великобритания", "Король Чарльз III");
+            monarchy.Describe();
 
-            if (difference1 == difference2)
-                Console.WriteLine($"Цифры данного трехзначного числа образуют арифметическую прогрессию");
-           
-            else
-                Console.WriteLine("ложь");
+            Kingdom kingdom = new Kingdom("Швеция", "Король Карл XVI Густав");
+            kingdom.Describe();
+
+            State state = new State("США");
+            state.Describe();
         }
     }
 }
-
-

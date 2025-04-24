@@ -1,22 +1,26 @@
-﻿namespace ConsoleApp1
+﻿using System;
+
+namespace ConsoleApp2
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Введите число 1 ");
-            int a = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Введите число 2 ");
-            int b = Convert.ToInt32(Console.ReadLine());
+            const double candyKg = 2.50;
+            const double appleKg = 1.30;
+            const double cookieKg = 6.30;
 
-            int sum = a + b;
-            int different = a - b;
-            int product = a * b;
+            Console.WriteLine("введите количесвто конфет в кг");
+            double candy = Convert.ToDouble(Console.ReadLine());
 
-            Console.WriteLine("сумма:" + sum );
-            Console.WriteLine("разность: " + different);
-            Console.WriteLine("произведение: " + product);
+            Console.WriteLine("введите количесвто яблок в кг");
+            double apple = Convert.ToDouble(Console.ReadLine());
+
+            Console.WriteLine("введите количесвто печенья в кг");
+            double cookie = Convert.ToDouble(Console.ReadLine());
+
+            double totalSum = (candyKg * candy) + (appleKg * appleKg) + (cookieKg * cookie);
+            Console.WriteLine($"полная сумма {totalSum}");
         }
     }
 }
-    

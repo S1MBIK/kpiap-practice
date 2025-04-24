@@ -1,22 +1,31 @@
-﻿using System;
-
-class Program
+﻿namespace ConsoleApp3
 {
-    static void Main()
+    internal class Program
     {
-        Console.Write("Значения угла alpha в радиусах: ");
-        double alpha = Convert.ToDouble(Console.ReadLine());
+        static void Main(string[] args)
+        {
 
-        double radians = alpha * Math.PI / 180;
+            double sum = 0;
+            Console.WriteLine("введите N от 1 до 10");
+            double n = Convert.ToInt32(Console.ReadLine());
+            if (n >= 1 && n <= 10)
+            {
+                for (double i = 1; i < n; i++)
+                {
 
-        double z1 = (Math.Sin(2 * radians) + Math.Sin(5 * radians) - Math.Sin(3 * radians)) /
-                     (Math.Cos(radians) + 1 - 2 * Math.Pow(Math.Sin(2 * radians), 2));
+                    double kvadrat = Math.Pow(i, 2);
+                    sum += kvadrat;
 
-        
-        double z2 = 2 * Math.Sin(radians);
+                    Console.WriteLine($"это квадрат {kvadrat} цифры {i}");
+                }
+                Console.WriteLine(sum);
+            }
+            else
+            {
+                Console.WriteLine("введите число от 1 до 10");
+                return;
+            }
 
-        
-        Console.WriteLine($"z1 = {z1}");
-        Console.WriteLine($"z2 = {z2}");
+        }
     }
 }

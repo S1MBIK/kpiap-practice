@@ -4,19 +4,38 @@ class Program
 {
     static void Main()
     {
-        double A1 = 1.0, B1 = 2.0, C1 = 3.0;
-        double A2 = 4.0, B2 = 5.0, C2 = 6.0;
+        try
+        {
+            // a: y = arctg(x) / (x - 3)
+            Console.Write("Введите значение x для выражения a: ");
+            string inputA = Console.ReadLine();
+            double xA = Convert.ToDouble(inputA);
+            if (xA == 3) throw new DivideByZeroException("Деление на ноль в выражении a.");
 
-        ShiftRight3(ref A1, ref B1, ref C1);
-        Console.WriteLine($"Первый набор после сдвига: A1 = {A1}, B1 = {B1}, C1 = {C1}");
+            double yA = Math.Atan(xA) / (xA - 3);
+            Console.WriteLine($"Результат выражения a: y = {yA}");
 
-        ShiftRight3(ref A2, ref B2, ref C2);
-        Console.WriteLine($"Второй набор после сдвига: A2 = {A2}, B2 = {B2}, C2 = {C2}");
-    }
+            // Пример b: y = ln(x) + (5x - 3) / (x - 1)
+            Console.Write("Введите значение x для выражения b: ");
+            string inputB = Console.ReadLine();
+            double xB = Convert.ToDouble(inputB);
+            if (xB <= 0) throw new FormatException("Нельзя взять логарифм от отрицательного числа или нуля в выражении b.");
+            if (xB == 1) throw new DivideByZeroException("Деление на ноль в выражении b.");
 
-    static void ShiftRight3(ref double A, ref double B, ref double C)
-    {
-        (A, B, C) = (C, A, B);
-
+            double yB = Math.Log(xB) + (5 * xB - 3) / (xB - 1);
+            Console.WriteLine($"Результат выражения b: y = {yB}");
+        }
+        catch (DivideByZeroException ex)
+        {
+            Console.WriteLine($"Ошибка: {ex.Message}");
+        }
+        catch (FormatException ex)
+        {
+            Console.WriteLine($"Ошибка: {ex.Message}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Неизвестная ошибка: {ex.Message}");
+        }
     }
 }

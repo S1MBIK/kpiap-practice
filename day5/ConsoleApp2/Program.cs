@@ -4,49 +4,51 @@ class Program
 {
     static void Main()
     {
-        try
-        {
-            Console.Write("Введите значение x: ");
-            string input = Console.ReadLine();
-            double x = Convert.ToDouble(input);
+    
+        int n = 10; 
+        int[] numbers = new int[n];
 
-            if (x <= 0 || x >= 1 && x < 1)
-            {
-                throw new ArgumentOutOfRangeException("x должен быть в диапазоне (0, 1) или x >= 1.");
-            }
+        Random random = new Random();
 
-            double f;
-            if (x > 0 && x < 1)
-            {
-                f = x * Math.Cos(x);
-            }
-            else if (x >= 1)
-            {
-                if (x == 1) throw new DivideByZeroException("Деление на ноль в выражении f.");
-                f = 12.0 / (3 * x - 3);
-            }
-            else
-            {
-                throw new ArgumentOutOfRangeException("x должен быть в диапазоне (0, 1) или x >= 1.");
-            }
+        for (int i = 0; i < n; i++)
+        {
+            numbers[i] = random.Next(-50, 51);
+        }
 
-            Console.WriteLine($"Результат функции f: f = {f}");
-        }
-        catch (DivideByZeroException ex)
+        Console.WriteLine("Сгенерированный массив: " + string.Join(", ", numbers));
+
+        bool isEvenAfterOdd = false;
+
+        for (int i = 0; i < n - 1; i++)
         {
-            Console.WriteLine($"Ошибка: {ex.Message}");
+            if (numbers[i] % 2 != 0 && numbers[i + 1] % 2 == 0)
+            {
+                isEvenAfterOdd = true;
+                break;
+            }
         }
-        catch (FormatException ex)
+
+        if (isEvenAfterOdd)
         {
-            Console.WriteLine($"Ошибка: неверный формат ввода. {ex.Message}");
+            Console.WriteLine("Положительные числа в обратном порядке:");
+            for (int i = n - 1; i >= 0; i--)
+            {
+                if (numbers[i] > 0)
+                {
+                    Console.Write(numbers[i] + " ");
+                }
+            }
         }
-        catch (ArgumentOutOfRangeException ex)
+        else
         {
-            Console.WriteLine($"Ошибка: {ex.Message}");
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Неизвестная ошибка: {ex.Message}");
+            Console.WriteLine("Отрицательные числа в обратном порядке:");
+            for (int i = n - 1; i >= 0; i--)
+            {
+                if (numbers[i] < 0)
+                {
+                    Console.Write(numbers[i] + " ");
+                }
+            }
         }
     }
 }
