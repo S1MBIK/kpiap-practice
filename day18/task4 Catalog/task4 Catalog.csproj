@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>task4_Catalog</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\task4 MusicCD\task4 MusicCD.csproj" />
+    <ProjectReference Include="..\Task4 Song\Task4 Song.csproj" />
+  </ItemGroup>
+
+</Project>
