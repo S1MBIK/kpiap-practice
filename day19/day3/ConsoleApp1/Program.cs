@@ -1,7 +1,13 @@
 ﻿using System;
 
+/// <summary>
+/// Основной класс программы
+/// </summary>
 class Program
 {
+    /// <summary>
+    /// Точка входа в программу
+    /// </summary>
     static void Main()
     {
         double A1 = 1.0, B1 = 2.0, C1 = 3.0;
@@ -14,9 +20,18 @@ class Program
         Console.WriteLine($"Второй набор после сдвига: A2 = {A2}, B2 = {B2}, C2 = {C2}");
     }
 
+    /// <summary>
+    /// Выполняет циклический сдвиг трех переменных вправо
+    /// </summary>
+    /// <param name="A">Первая переменная</param>
+    /// <param name="B">Вторая переменная</param>
+    /// <param name="C">Третья переменная</param>
+    /// <remarks>
+    /// После выполнения метода значения переменных будут изменены следующим образом:
+    /// A = C, B = A, C = B
+    /// </remarks>
     static void ShiftRight3(ref double A, ref double B, ref double C)
     {
         (A, B, C) = (C, A, B);
-
     }
 }

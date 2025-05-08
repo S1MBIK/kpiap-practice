@@ -2,8 +2,20 @@
 using System.IO;
 using System.Runtime.InteropServices;
 
+/// <summary>
+/// Основной класс программы для работы с файловой системой
+/// </summary>
 class Program
 {
+    /// <summary>
+    /// Точка входа в программу. Выполняет следующие операции:
+    /// 1. Выводит список всех файлов на локальных дисках
+    /// 2. Создает каталог на диске D
+    /// 3. Копирует файлы из другого каталога
+    /// 4. Делает скопированные файлы скрытыми
+    /// 5. Создает ярлыки для скрытых файлов
+    /// </summary>
+    /// <param name="args">Аргументы командной строки</param>
     static void Main(string[] args)
     {
         // 1. Вывести список всех файлов на всех локальных дисках
@@ -73,6 +85,11 @@ class Program
         Console.WriteLine("Готово!");
     }
 
+    /// <summary>
+    /// Создает ярлык (shortcut) для указанного файла
+    /// </summary>
+    /// <param name="shortcutPath">Путь, по которому будет создан ярлык</param>
+    /// <param name="targetPath">Путь к целевому файлу</param>
     static void CreateShortcut(string shortcutPath, string targetPath)
     {
        

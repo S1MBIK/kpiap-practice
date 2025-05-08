@@ -1,7 +1,15 @@
 ﻿namespace ConsoleApp5
 {
+    /// <summary>
+    /// Основной класс программы для работы с файлами и числовыми последовательностями
+    /// </summary>
     internal class Program
     {
+        /// <summary>
+        /// Точка входа в программу. Создает два файла с четными и нечетными числами,
+        /// затем объединяет их в третий файл с сортировкой по возрастанию
+        /// </summary>
+        /// <param name="args">Аргументы командной строки</param>
         static void Main(string[] args)
         {
             string file1Path = "f1.txt";
