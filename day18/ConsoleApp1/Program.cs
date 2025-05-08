@@ -5,7 +5,7 @@ class Program
 {
     static void Main()
     {
-        string inputString = "abc#d##c";
+        string inputString = "abcasd#af##asdasd##asdasd#d##c";
         string outputString = TransformString(inputString);
         Console.WriteLine(outputString);  
     }
