@@ -1,0 +1,36 @@
+﻿<Window x:Class="WpfApp2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock x:Name="TextBlock" Grid.Row="0" Grid.ColumnSpan="2" Text="Hello World" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" 
+                   FontSize="36" />
+
+        <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
+                 Margin="10" 
+                 x:Name="myTextBox"
+                 Text="Введите имя"
+                 />
+
+        <Button Grid.Row="2" Grid.Column="0" Content="Сказать Имя" 
+                Margin="10" Click="Button_Click" />
+
+        <Button Grid.Row="2" Grid.Column="1" Content="Закрыть" 
+                Margin="10" Click="Button_Click_1" />
+
+        <Button Grid.Row="0" Grid.Column="1" Content="Справка" 
+                HorizontalAlignment="Right" VerticalAlignment="Top" 
+                Margin="10" Click="Button_Click_2" />
+    </Grid>
+</Window>

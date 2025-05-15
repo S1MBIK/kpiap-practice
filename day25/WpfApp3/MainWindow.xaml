@@ -1,0 +1,17 @@
+﻿<Window x:Class="WpfApp3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="450" Width="600">
+    <Grid>
+        <TextBox x:Name="inputX" Width="100" Height="30" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" 
+                 Text="Введите x" 
+                 GotFocus="InputX_GotFocus" 
+                 LostFocus="InputX_LostFocus" />
+        <TextBox x:Name="inputH" Width="100" Height="30" Margin="10,45,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" 
+                 Text="Введите h" 
+                 GotFocus="InputH_GotFocus" 
+                 LostFocus="InputH_LostFocus" />
+        <Button Content="Построить график" Width="150" Height="30" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Right" Click="PlotGraphButton_Click" />
+        <Canvas x:Name="graphCanvas" Margin="10" VerticalAlignment="Bottom" Height="300" Background="LightGray" />
+    </Grid>
+</Window>
