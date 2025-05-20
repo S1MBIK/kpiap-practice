@@ -20,7 +20,6 @@ namespace WpfApp1
         {
             InitializeComponent();
 
-            // Добавляем наш кастомный элемент на окно
             Content = new MyShapes();
         }
     }
@@ -72,7 +71,7 @@ namespace WpfApp1
             }
             dc.DrawGeometry(Brushes.Purple, new Pen(Brushes.Purple, 2), sector);
 
-            // 2. Концентрические кольца (три окружности)
+            // три окружности
             Point ringsCenter = new Point(80, 350);
             double[] radii = { 40, 30, 20 };
             foreach (var r in radii)
@@ -102,7 +101,7 @@ namespace WpfApp1
                     dc.DrawRectangle(Brushes.Black, null, new Rect(boardX + col * cell, boardY + row * cell, cell, cell));
                 }
             }
-            // Обводка для доски
+            
             dc.DrawRectangle(null, new Pen(Brushes.Black, 2), new Rect(boardX, boardY, n * cell, n * cell));
         }
     }
