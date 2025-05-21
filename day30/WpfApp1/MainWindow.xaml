@@ -1,0 +1,52 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Туристическая фирма" Height="900" Width="900">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Туры">
+                <DataGrid x:Name="ToursDataGrid" AutoGenerateColumns="True"/>
+            </TabItem>
+            <TabItem Header="Туристы">
+                <DataGrid x:Name="TouristsDataGrid" AutoGenerateColumns="True"/>
+            </TabItem>
+            <TabItem Header="Действия" Height="22" Margin="-2,-2,-2,0" VerticalAlignment="Top">
+                <StackPanel Margin="10">
+                    <GroupBox Header="Удаление тура" Margin="0,0,0,10">
+                        <StackPanel Margin="5">
+                            <Label Content="Код тура для удаления:"/>
+                            <TextBox x:Name="DeleteTourIdBox" Margin="0,5"/>
+                            <Button Content="Удалить тур" Click="DeleteTour_Click" Margin="0,5"/>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <GroupBox Header="Добавление туриста" Margin="0,0,0,10">
+                        <StackPanel Margin="5">
+                            <Label Content="Фамилия:"/>
+                            <TextBox x:Name="AddSurnameBox" Margin="0,5"/>
+                            <Label Content="Имя:"/>
+                            <TextBox x:Name="AddNameBox" Margin="0,5"/>
+                            <Label Content="Отчество:"/>
+                            <TextBox x:Name="AddPatronymicBox" Margin="0,5"/>
+                            <Button Content="Добавить туриста" Click="AddTourist_Click" Margin="0,5"/>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <GroupBox Header="Изменение туриста" Margin="0,0,0,10">
+                        <StackPanel Margin="5">
+                            <Label Content="Код туриста:"/>
+                            <TextBox x:Name="EditTouristIdBox" Margin="0,5"/>
+                            <Label Content="Фамилия:"/>
+                            <TextBox x:Name="EditSurnameBox" Margin="0,5"/>
+                            <Label Content="Имя:"/>
+                            <TextBox x:Name="EditNameBox" Margin="0,5"/>
+                            <Label Content="Отчество:"/>
+                            <TextBox x:Name="EditPatronymicBox" Margin="0,5"/>
+                            <Button Content="Изменить туриста" Click="EditTourist_Click" Margin="0,5"/>
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
