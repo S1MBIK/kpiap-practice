@@ -1,0 +1,13 @@
+CREATE DATABASE Products
+GO
+
+USE Products
+GO
+
+CREATE TABLE Products (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Name NVARCHAR(100) NOT NULL,
+    Price DECIMAL(18,2) NOT NULL,
+    Quantity INT NOT NULL
+)
+GO 
