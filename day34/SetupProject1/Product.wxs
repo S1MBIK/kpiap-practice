@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="WpfApp4" Language="1049" Version="1.0.0.0" Manufacturer="Your Company" UpgradeCode="dd641531-3e46-4d0b-ab53-33c3773adb9d">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate />
+
+		<Feature Id="ProductFeature" Title="WpfApp4" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+		</Feature>
+
+		<Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+		<UIRef Id="WixUI_InstallDir" />
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="WpfApp4" />
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			<ComponentRef Id="Component_App_xaml" />
+			<ComponentRef Id="Component_App_xaml_cs" />
+			<ComponentRef Id="Component_MainWindow_xaml" />
+			<ComponentRef Id="Component_MainWindow_xaml_cs" />
+			<ComponentRef Id="Component_AssemblyInfo_cs" />
+			<ComponentRef Id="Component_WpfApp4_exe" />
+			<ComponentRef Id="Component_WpfApp4_pdb" />
+		</ComponentGroup>
+	</Fragment>
+
+	<Fragment>
+		<Component Id="Component_App_xaml" Guid="*" Directory="INSTALLFOLDER">
+			<File Id="File_App_xaml" Source="..\day25\WpfApp4\App.xaml" />
+		</Component>
+	</Fragment>
+	<Fragment>
+		<Component Id="Component_App_xaml_cs" Guid="*" Directory="INSTALLFOLDER">
+			<File Id="File_App_xaml_cs" Source="..\day25\WpfApp4\App.xaml.cs" />
+		</Component>
+	</Fragment>
+	<Fragment>
+		<Component Id="Component_MainWindow_xaml" Guid="*" Directory="INSTALLFOLDER">
+			<File Id="File_MainWindow_xaml" Source="..\day25\WpfApp4\MainWindow.xaml" />
+		</Component>
+	</Fragment>
+	<Fragment>
+		<Component Id="Component_MainWindow_xaml_cs" Guid="*" Directory="INSTALLFOLDER">
+			<File Id="File_MainWindow_xaml_cs" Source="..\day25\WpfApp4\MainWindow.xaml.cs" />
+		</Component>
+	</Fragment>
+	<Fragment>
+		<Component Id="Component_AssemblyInfo_cs" Guid="*" Directory="INSTALLFOLDER">
+			<File Id="File_AssemblyInfo_cs" Source="..\day25\WpfApp4\AssemblyInfo.cs" />
+		</Component>
+	</Fragment>
+	<Fragment>
+		<Component Id="Component_WpfApp4_exe" Guid="*" Directory="INSTALLFOLDER">
+			<File Id="File_WpfApp4_exe" Source="..\day25\WpfApp4\bin\Debug\net8.0-windows\WpfApp4.exe" KeyPath="yes"/>
+			<Environment Id="SetInstallDir" Name="INSTALLDIR_WPFAPP4" Value="[INSTALLFOLDER]" Permanent="no" Part="last" Action="set" />
+		</Component>
+	</Fragment>
+	<Fragment>
+		<Component Id="Component_WpfApp4_pdb" Guid="*" Directory="INSTALLFOLDER">
+			<File Id="File_WpfApp4_pdb" Source="..\day25\WpfApp4\bin\Debug\net8.0-windows\WpfApp4.pdb" />
+		</Component>
+	</Fragment>
+</Wix>
+
